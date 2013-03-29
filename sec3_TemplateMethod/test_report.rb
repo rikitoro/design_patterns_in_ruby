@@ -1,4 +1,8 @@
-require 'report.rb'
+require 'htmlReport'
+require 'plainTextReport'
 
-report = Report.new
-report.output_report(:html)
+html_report = HTMLReport.new
+html_report.output_report
+
+plain_report = PlainTextReport.new
+plain_report.output_report
