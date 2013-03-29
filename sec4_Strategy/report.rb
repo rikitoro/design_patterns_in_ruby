@@ -1,4 +1,3 @@
-require 'formatter'
 
 class Report
 	attr_reader :title, :text
