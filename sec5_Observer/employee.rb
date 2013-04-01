@@ -1,7 +1,7 @@
-require 'observer'
+require 'subject'
 
 class Employee
-	include Observable
+	include Subject
 	
 	attr_reader :name
 	attr_reader :title, :salary
@@ -15,8 +15,7 @@ class Employee
 	
 	def salary=(new_salary)
 		@salary = new_salary
-		changed
-		notify_observers(self)
+		notify_observers
 	end
 	
 end
