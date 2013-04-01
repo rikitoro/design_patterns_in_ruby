@@ -1,4 +1,6 @@
-class Employee
+require 'subject'
+
+class Employee < Subject
 	attr_reader :name
 	attr_reader :title, :salary
 
@@ -14,17 +16,4 @@ class Employee
 		notify_observers
 	end
 	
-	def notify_observers
-		@observers.each do |observer|
-			observer.update(self)
-		end
-	end
-	
-	def add_observer(observer)
-		@observers << observer
-	end
-	
-	def delete_observer(observer)
-		@observers.delete(observer)
-	end
 end
