@@ -1,6 +1,8 @@
 require 'subject'
 
-class Employee < Subject
+class Employee
+	include Subject
+	
 	attr_reader :name
 	attr_reader :title, :salary
 
