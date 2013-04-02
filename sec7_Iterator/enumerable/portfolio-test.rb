@@ -10,4 +10,3 @@ p my_portfolio.any? {|account| account.balance > 2000}
 p my_portfolio.any? {|account| account.balance > 2001}
 p my_portfolio.all?	{|account| account.balance >= 10}
 p my_portfolio.all?	{|account| account.balance >= 20}
-
