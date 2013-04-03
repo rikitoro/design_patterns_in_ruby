@@ -11,3 +11,4 @@ cmds.add_command(DeleteFile.new('file1.txt'))
 
 puts(cmds.description)
 cmds.execute
+cmds.unexecute

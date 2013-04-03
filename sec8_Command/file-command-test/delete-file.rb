@@ -1,14 +1,21 @@
 require 'command'
-require 'fileutils'
 
-class CopyFile < Command
-	def initialize(source, target)
-		super("Copy file: #{source} to #{target}")
-		@source = source
-		@target = target
+class DeleteFile < Command
+	def initialize(path)
+		super("Delete file: #{path}")
+		@path = path
 	end
 	
 	def execute
-		FileUtils.copy(@source, @target)
+		if File.exist?(@path)
+			@contents = File.read(@path)
+		end
+		File.delete(@path)
+	end
+	
+	def unexecute
+		f = File.open(@path, "w")
+		f.write(@contents)
+		f.close
 	end
 end
