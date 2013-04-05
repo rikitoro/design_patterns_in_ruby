@@ -1,0 +1,4 @@
+Hello World.
+Hello Ruby World.
+Wovon man nicht sprechen kann,
+daruber muss man schweigen.
