@@ -5,3 +5,4 @@ class TimeStampingWriter < WriterDecorator
 		@real_writer.write_line("#{Time.new}: #{line}")
 	end
 end
+
