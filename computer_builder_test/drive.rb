@@ -9,3 +9,7 @@ class Drive
 		@writable = writable
 	end
 end
+
+class LaptopDrive < Drive
+	#
+end

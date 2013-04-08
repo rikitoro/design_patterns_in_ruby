@@ -1,11 +1,18 @@
 require 'computer_builder'
 
-builder = ComputerBuilder.new
-builder.turbo
-builder.add_cd(true)
-builder.add_dvd
-builder.add_hard_disk(1000000)
+builder1 = DesktopBuilder.new
+builder1.turbo
+builder1.add_cd(true)
+builder1.add_dvd
+builder1.add_hard_disk(1000000)
+desktop = builder1.computer
+p desktop
 
-computer = builder.computer
+builder2 = LaptopBuilder.new
+builder2.add_hard_disk(10000)
+laptop = builder2.computer
+p laptop
 
-p computer
+builder3 = LaptopBuilder.new
+builder3.add_cd
+laptop3 = builder3.computer
