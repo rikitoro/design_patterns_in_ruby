@@ -1,7 +1,8 @@
-require 'singleton'
+#require 'packrat.rb'
+require 'data_source'
 
 class Backup
-	include Singleton
+
 	
 	attr_accessor :backup_directory, :interval
 	attr_reader :data_sources
@@ -10,7 +11,24 @@ class Backup
 		@data_sources = []
 		@backup_directory = 'backup'
 		@interval = 60
+		yeild(self) if block_given?
+		PackRat.instance.register_backup(self)
 	end
+	
+	
+	def backup(dir, find_expression = All.new)
+		@data_sources << DataSource.new(dir, find_expression)
+	end
+
+	def to(backup_directory)
+		@backup_directory = backup_directory
+	end
+
+	def interval(minutes)
+		@interval = minutes
+	end
+	
+	
 	
 	def backup_files
 		this_backup_dir = Time.new.ctime.tr(' :', '_')

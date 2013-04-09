@@ -1,19 +1,26 @@
-require 'find'
 require 'expression'
+require 'singleton'
 require 'backup'
-require 'data_source'
 
-def backup(dir, find_expression = All.new)
-	Backup.instance.data_sources << DataSource.new(dir, find_expression)
-end
+class PackRat
+	include Singleton
 
-def to(backup_directory)
-	Backup.instance.backup_directory = backup_directory
-end
-
-def interval(minutes)
-	Backup.instance.interval = minutes
+	def initialize
+		@backups = []
+	end
+	
+	def register_backup(backup)
+		@backups << backup
+	end
+	
+	def run
+		threads = []
+		@backups.each do |backup|
+			threads << Thread.new {backup.run}
+		end
+		threads.each {|t| t.join}
+	end
 end
 
 eval(File.read('backup.pr'))
-Backup.instance.run
+Packrat.instance.run

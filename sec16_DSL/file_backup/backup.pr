@@ -1,5 +1,11 @@
-backup 'test_dir/rikitoro/documents'
-backup 'test_dir/rikitoro/music', file_name('*.mp3') | file_name('*.wav')
-backup 'test_dir/rikitoro/images', except(file_name('*.tmp'))
-to 'test_dir/backups/'
-interval 60
+Backup.new do |b|
+	b.backup 'test_dir/rikitoro/music' file_name('*.mp3') | file_name('*.wav')
+	b.to 'test_dir/music_backup'
+	b.interval 60
+end
+
+Backup.new do |b|
+	b.backup 'test_dir/rikitoro/music_old' file_name('*.mp3') | file_name('*.wav')
+	b.to 'test_dir/music_backup'
+	b.interval 60
+end
