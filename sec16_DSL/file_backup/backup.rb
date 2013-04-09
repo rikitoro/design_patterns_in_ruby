@@ -15,7 +15,7 @@ class Backup
 	def backup_files
 		this_backup_dir = Time.new.ctime.tr(' :', '_')
 		this_backup_path = File.join(backup_directory, this_backup_dir)
-		@data_sources.each { |source| source.backup(this_backup_dir)}
+		@data_sources.each { |source| source.backup(this_backup_path)}
 	end
 	
 	def run

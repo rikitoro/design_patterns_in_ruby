@@ -1,3 +1,5 @@
+require 'fileutils'
+
 class DataSource
 	attr_reader :directory, :finder_expression
 	

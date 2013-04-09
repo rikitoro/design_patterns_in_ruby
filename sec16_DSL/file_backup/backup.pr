@@ -1,5 +1,5 @@
 backup 'test_dir/rikitoro/documents'
-backup 'test_dir/rikitoro/music', file_name('*.mp3') & file_name('*.wav')
+backup 'test_dir/rikitoro/music', file_name('*.mp3') | file_name('*.wav')
 backup 'test_dir/rikitoro/images', except(file_name('*.tmp'))
 to 'test_dir/backups/'
 interval 60
